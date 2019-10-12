@@ -26,15 +26,12 @@ int sign(int x){
 
 int getByte(int x, int n) {
 	int m = 255 << (n << 3);
-	int c = ((m & x) >> 1) & (~(1 << 31));
-	c = c << 1;
-	return c >> (n << 3);
+	return ((m & x) >> (n << 3)) & 255;
 }
 
 int logicalShift (int x, int n){
-	int m = ~(1 << 31);
-	x = x >> 1 & m;
-	return x >> n - 1;
+	int m = ((~(1 << 31)) >> (n - 1));
+	return (x >> n) & m;
 }
 
 int addOK(int x, int y) {
@@ -60,7 +57,7 @@ int conditional(int x, int y, int z){
     x |= (x >> 4);
     x |= (x >> 8);
     x |= (x >> 16);
-	x =  ((x & 1) - 1);
+	x =  ((x & 1) + ~0);
 	return ((~x) & y) + (x & z);
 }
 
@@ -72,5 +69,5 @@ int isPower2(int x){
     a |= (a << 8);
     a |= (a << 16);
 	b = ((~a) << 1) + 1;
-	return !(a & b + ~x + ~0) + ~!!(x & (1 << 31)) + ~1  + ~!x;
+	return !(a & b + ~x + 1) + ~!(x ^ (1 << 31)) + 2 + ~!x;
 }
