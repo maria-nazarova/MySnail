@@ -13,9 +13,8 @@ int thirdBits (void){
 }
 
 int fitsBits (int x, int n){
-	int m = (1 << (n - 1));
-	m = (m << 1) + ~0;
-	int negm = ~m >> 1;
+	int m = (1 << (n - 1))+ ~0;
+	int negm = ~m;
 	return !((x & m) ^ x) | !(negm & x ^ negm);
 }
 
@@ -30,8 +29,9 @@ int getByte(int x, int n) {
 }
 
 int logicalShift (int x, int n){
-	int m = ((~(1 << 31)) >> (n - 1));
-	return (x >> n) & m;
+	int mm = 1 << 31;
+	int m = (~mm) >> (n - 1 + (!!(mm & x)) & (!n));
+	return (x >> n) & m | (((mm & x)) & ((!n) << 31));
 }
 
 int addOK(int x, int y) {
