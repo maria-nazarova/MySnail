@@ -3,35 +3,35 @@
 
 size_t strlen_(char *str) {
 	size_t len = 0;
-	while(str[++len]);
-	return len;
+	while(str[len++]);
+	return len - 1;
 }
 
 void strcpy_(char *dst, char *str) {
-	int i = 0;
+	size_t i = 0;
 	do {
 		dst[i] = str[i];
 	} while (str[i++]);
 }
 
 void strcat_(char *dst, char *str) {
-	int len = strlen_(dst), i = 0;
+	size_t len = strlen_(dst), i = 0;
 	do {
 		dst[len] = str[i];
 		++len;
 	} while (str[i++]);
 }
 
-int strcmp_(char *dst, char *str) {
-	int len1 = strlen_(dst), len2 = strlen_(str), i = 0;
+int strcmp_(char *str1, char *str2) {
+	size_t len1 = strlen_(str1), len2 = strlen_(str2), i = 0;
 	do {
-		if (dst[i] > str[i]) {
+		if (str1[i] > str2[i]) {
 			return 1;
 		}
-		if (dst[i] < str[i]) {
+		if (str1[i] < str2[i]) {
 			return -1;
 		}
-	} while (str[i++] && dst[i]);
+	} while (str2[i++]);
 	if (len1 > len2) {
 		return 1;
 	} else if (len2 > len1) {
