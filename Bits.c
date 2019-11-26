@@ -29,9 +29,12 @@ int getByte(int x, int n) {
 }
 
 int logicalShift (int x, int n){
-	int mm = 1 << 31;
-	int m = (~mm) >> (n - 1 + (!!(mm & x)) & (!n));
-	return (x >> n) & m | (((mm & x)) & ((!n) << 31));
+	int m = ~(1 << 31);
+	m = m >> (n);
+	m = (m << 1) + 1;
+	x = x >> n;
+	x = x & m;
+	return x;
 }
 
 int addOK(int x, int y) {
