@@ -14,12 +14,11 @@ void swap(int *a, int *b) {
 }
 
 void countingSort(int *b, size_t n) {
-	int *count = malloc(itsbig * 4);
+	int *count = calloc(itsbig, sizeof(int));
 	if (count == NULL) {
 		printf("Failed allocating memory");
 		return;
 	}
-	memset(count, 0, itsbig * 4);
 	for (size_t i = 0; i < n; i++) {
 		count[b[i]]++;
 	}
@@ -95,14 +94,14 @@ int main() {
 	}
 	
 	
-	for (size_t i = 0; i < numN; ++i){
-		printf("Array size = %d\n", n[i]);
-		for (size_t j = 0; j < numS; j++) {
+	for (size_t j = 0; j < numS; ++j){
+		printf("O(%s)\n", names[j]);
+		for (size_t i = 0; i < numN; i++) {
 			random(data, n[i]);
 			beg = clock();
 			sorts[j](data, n[i]);
 			end = clock();
-			printf("O(%s) Time = %3.5f  ", names[j], (float) (end - beg)/CLOCKS_PER_SEC);
+			printf("Array size = %d Time = %3.5f\n", n[i], (float) (end - beg)/CLOCKS_PER_SEC);
 		}
 	printf("\n\n");
 	}
