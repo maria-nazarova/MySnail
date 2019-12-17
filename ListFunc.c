@@ -1,11 +1,11 @@
 #include "List.c"
 
 int main(){
-	enum {CREATE, ADD_B, ADD_E, ADD_K, DELETE, PRINT_LIST, PRINT_Node, CLEAR};
+	enum {CREATE, ADD_B, ADD_E, ADD_K, DELETE, PRINT_LIST, PRINT_Node, CLEAR, EXIT};
 	int a = 0, n = 0;
 	size_t k = 0;
-	_Bool isList = 0;
-	struct List* myList = malloc(sizeof(struct List));
+	_Bool isList = 0, cont = 1;
+	struct List* myList = NULL;
 	
 	printf("Operations:\n");
 	printf("0 - Create list\n");
@@ -19,14 +19,19 @@ int main(){
 	printf("8 - Exit\n");
 	printf("Enter number of operation\n");
 	scanf("%d", &a);
-	while(a != 8) {
+	
+	while(cont) {
 		switch (a) {
 			case CREATE:
 				if (isList) {
 					printf("You already have a list\n");
 				} else {
 					myList = createList();
-					isList++;
+					if (myList){
+						isList++;
+					} else {
+						printf("Failed to create list");
+					}
 				}
 				break;
 				
@@ -67,7 +72,7 @@ int main(){
 				break;
 				
 				case PRINT_LIST:
-				if(isList) {
+				if (isList) {
 					printList(myList);
 				} else {
 					printf("You do not have a list yet\n");
@@ -75,7 +80,7 @@ int main(){
 				break;
 				
 			case PRINT_Node:
-				if(isList) {
+				if (isList) {
 					printNode(myList, k);
 				} else {
 					printf("You do not have a list yet\n");
@@ -88,6 +93,10 @@ int main(){
 				} else {
 					printf("You do not have a list yet\n");
 				}
+				break;
+				
+			case EXIT:
+				cont = 0;
 				break;
 				
 			default:
