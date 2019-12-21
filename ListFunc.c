@@ -1,7 +1,7 @@
 #include "List.c"
 
 int main(){
-	enum {CREATE, ADD_B, ADD_E, ADD_K, DELETE, PRINT_LIST, PRINT_Node, CLEAR, EXIT};
+	enum {CREATE, ADD_B, ADD_E, ADD_K, DELETE, PRINT_LIST, PRINT_Node, CLEAR, CREATECYCLE, FINDCYCLE, EXIT};
 	int a = 0, n = 0;
 	size_t k = 0;
 	_Bool isList = 0, cont = 1;
@@ -16,7 +16,9 @@ int main(){
 	printf("5 - Print the whole list\n");
 	printf("6 <k> - Print k-th node\n");
 	printf("7 - Clear list\n");
-	printf("8 - Exit\n");
+	printf("8 <k> - Create a cycle staring at k'th node\n");
+	printf("9 - Find a cycle in the list\n");
+	printf("10 - Exit\n");
 	printf("Enter number of operation\n");
 	scanf("%d", &a);
 	
@@ -30,7 +32,7 @@ int main(){
 					if (myList){
 						isList++;
 					} else {
-						printf("Failed to create list");
+						printf("Failed to create list\n");
 					}
 				}
 				break;
@@ -90,11 +92,33 @@ int main(){
 			case CLEAR:
 				if (isList) {
 					freeList(myList);
+					isList = 0;
 				} else {
 					printf("You do not have a list yet\n");
 				}
 				break;
 				
+			case CREATECYCLE:
+				if (isList) {
+					scanf("%d", &k);
+					createCycle(myList, getN(myList, k));
+				} else {
+					printf("You do not have a list yet\n");
+				}
+				break;
+			
+			case FINDCYCLE:
+			if (isList) {
+					if (findCycle(myList)) {
+						printf("There is a cycle in the list\n");
+					} else {
+						printf("There are no cycles in the list\n");
+					}
+				} else {
+					printf("You do not have a list yet\n");
+				}
+				break;
+			
 			case EXIT:
 				cont = 0;
 				break;
@@ -102,6 +126,9 @@ int main(){
 			default:
 				printf("Wrong input\n");
 				break;
+		}
+		if (!cont) {
+			break;
 		}
 		scanf("%d", &a);
 	}
