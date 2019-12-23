@@ -1,4 +1,4 @@
-#include "ListForHash.h"
+#include "ListForHash.h" 
 #include <stdio.h>
 #include <memory.h>
 #include <stdlib.h>
@@ -78,9 +78,7 @@ void freeList(struct List* list) {
 		curr = curr -> next;
 		free(tmp);
 	}
-	list -> head = NULL;
-	list -> tail = NULL;
-	list -> length = 0;
+	free(list);
 	return;
 }
 

@@ -1,7 +1,7 @@
 #include "HashTable.h"
 
 struct HashTable* createTable(size_t (*hashF) (char* word), size_t n) {
-	struct HashTable* table = malloc(sizeof(struct Table*));
+	struct HashTable* table = malloc(sizeof(struct HashTable));
 	if (!table) {
 		printf("Cannot create a hashtable");
 		return NULL;
