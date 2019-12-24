@@ -89,7 +89,7 @@ _Bool findCycle(struct List* list) {
 	while (node1 -> next && node2 -> next) {
 		node1 = node1 -> next;
 		node2 = node2 -> next -> next;
-		if (node1 == node2){
+		if (node1 == node2) {
 			return 1;
 		}
 	}
@@ -97,7 +97,7 @@ _Bool findCycle(struct List* list) {
 }
 
 void createCycle(struct List* list, struct Node* node) {
-	if(list -> length < 2) {
+	if (list -> length < 2) {
 		printf("Cannot create a cycle\n");
 	}
 	
