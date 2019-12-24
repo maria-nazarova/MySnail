@@ -100,7 +100,7 @@ void printNode (struct List* list, size_t n) {
 struct Node* findInList(struct List* list, char *word) {
 	struct Node* curr = list -> head;
 	while (curr) {
-		if (curr -> word == word) {
+		if (strcmp(curr -> word, word) == 0) {
 			return curr;
 		}
 		curr = curr -> next;

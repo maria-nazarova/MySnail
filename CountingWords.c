@@ -1,9 +1,12 @@
-#include "HashTable.c"
+#include "HashTable.h"
 #include <string.h>
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 const size_t Table_Size = 50000;
-const char punct[] = {'.',',',':',';','\'','\"','!','(',')','?'};
+const char punct[] = {'.',',',':',';','\'','\"','!','(',')','?',0};
 
 size_t hashConst(char* word) {
 	return 5;
@@ -42,9 +45,7 @@ void noPunct(char* word){
 
 void upperCase(char* word) {
 	while (*word) {
-		if (*word >= 'a' || *word <= 'z') {
-			*word += 'A' - 'a';
-		}
+		*word = toupper((int)*word);
 		word++;
 	}
 	return;
@@ -56,7 +57,6 @@ int main() {
 	struct HashTable* table;
 	char word[Max_Word_Len];
 	clock_t beg, end;
-	
 	for (int i = 0; i < numT; ++i) {
 		beg = clock();
 		table = createTable(hashF[i], Table_Size);
@@ -64,7 +64,7 @@ int main() {
 			printf("Failed creating a table");
 			break;
 		}
-		FILE* fileP = fopen("Text.txt", "r");
+		FILE* fileP = fopen("Onegin.txt", "r");
 		if (!fileP) {
 			printf("Cannot open input file");
 		}
@@ -73,21 +73,17 @@ int main() {
 			noPunct(word);
 			upperCase(word);
 			if (*word) {
-				addWord(table, word);
 				setData(table, word, getData(table, word) + 1);
 			}
+			*word = 0;
 			fscanf(fileP, "%s", word);
 		}
+		end = clock();
 		statistics(table);
 		freeTable(table);
 		fclose(fileP);
-		end = clock();
 		printf("Time for hash%d = %3.5f\n\n", i, (float) (end - beg) / CLOCKS_PER_SEC);
 	}
 	return 0;
 }
-
-
-
-
 

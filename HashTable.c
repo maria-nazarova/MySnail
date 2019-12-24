@@ -1,4 +1,7 @@
 #include "HashTable.h"
+#include <stdio.h>
+#include <memory.h>
+#include <stdlib.h>
 
 struct HashTable* createTable(size_t (*hashF) (char* word), size_t n) {
 	struct HashTable* table = malloc(sizeof(struct HashTable));
@@ -24,8 +27,7 @@ struct HashTable* createTable(size_t (*hashF) (char* word), size_t n) {
 	return table;
 }
 	
-void addWord(struct HashTable* table, char *word) {
-	size_t hash = table -> hashF (word);
+void addWord(struct HashTable* table, char *word, size_t hash) {
 	struct Node* node = findInList(table -> words[hash], word);
 	if (!node) {
 		insertB(table -> words[hash], createNode(0, word));
@@ -54,12 +56,10 @@ size_t getData(struct HashTable* table, char *word) {
 
 void setData(struct HashTable* table, char* word, size_t val) {
 	size_t hash = table -> hashF (word);
+	addWord(table, word, hash);
 	struct Node* node = findInList(table -> words[hash], word);
-	if (!node) {
-		return;
-	} else {
-		node -> data = val;
-	}
+	node -> data = val;
+	
 	return;
 }
 
