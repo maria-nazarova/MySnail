@@ -83,6 +83,37 @@ void freeList(struct List* list) {
 	return;
 }
 
+_Bool findCycle(struct List* list) {
+	struct Node* node1 = list -> head;
+	struct Node* node2 = node1;
+	while (node1 -> next && node2 -> next) {
+		node1 = node1 -> next;
+		node2 = node2 -> next -> next;
+		if (node1 == node2) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+void createCycle(struct List* list, struct Node* node) {
+	if (list -> length < 2) {
+		printf("Cannot create a cycle\n");
+	}
+	
+	if (findCycle(list)) {
+		printf("You already have a cycle\n");
+		return;
+	}
+	
+	struct Node* node1 = node;
+	while (node1 -> next) {
+		node1 = node1 -> next;
+	}
+	node1 -> next = node;
+	return;
+}
+
 void printList(struct List* list) {
 	struct Node* curr = list -> head;
 	while (curr != NULL) {

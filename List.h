@@ -24,6 +24,10 @@ void deleteNode(struct List* list, struct Node* toDelete);
 
 void freeList(struct List* list);
 
+_Bool findCycle(struct List* list);
+
+void createCycle(struct List* list, struct Node* node);
+
 void printList(struct List* list);
 
 void printNode (struct List* list, size_t n);
