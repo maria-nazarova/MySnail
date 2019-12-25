@@ -12,14 +12,14 @@ int myStrCmp(const void* ptr1, const void* ptr2) {
 }
 
 void copyStrAddr(char **strings, char *inp) {
-    size_t i = 0, j = 0, k = 0;
-    while (inp[i]) {
-        if (inp[i] == '\n') {
-            strings[j] = &inp[k];
-            j++;
-			k = i + 1;
+    size_t indexChar = 0, indexString = 0, indexStringBeg = 0;
+    while (inp[indexChar]) {
+        if (inp[indexChar] == '\n') {
+            strings[indexString] = &inp[indexStringBeg];
+			indexString++;
+			indexStringBeg = indexChar + 1;
         }
-        i++;
+        indexChar++;
     }
 	return;
 }
