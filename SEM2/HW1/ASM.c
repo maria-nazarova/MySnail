@@ -24,8 +24,8 @@ struct Program {
 const size_t Max_Stack = 2000;
 const size_t Max_Memory_Size = (1 << 20);
 const size_t Max_Memory = Max_Memory_Size / sizeof(int32_t);
-const size_t Max_Operations_Size = 2000 * sizeof(struct Cmd);
 const size_t Max_Operations = 2000;
+const size_t Max_Operations_Size = Max_Operations * sizeof(struct Cmd);
 const size_t Max_Command_Length = 20;
 enum {RET, ADD, SUB, CMP, LD, ST, LDC, JMP, BR};
 const char ops[] = "retaddsubcmpldstldcjmpbr";
@@ -129,63 +129,66 @@ void readProgram(struct Program* program, FILE* file, size_t *opscount) {
 	}
 }
 
-void performProgram(struct Program* program, struct State* st, size_t opscount, size_t *stackk){
+void performProgram(struct Program* program, struct State* st, size_t opscount, size_t *stackTop){
 	size_t performing = 0;
-	*stackk = 0;
+	*stackTop = 0;
 	_Bool ret = 0;
 	while (st->IP < opscount) {
 		performing++;
 		switch (program->operations[st->IP].opCode) {
 			case ADD : 
-				if (*stackk < 2){
+				if (*stackTop < 2){
 					printf("Error in operation %d not enough operands in stack\n", st->IP + 1);
+					exit(1);
 				} else {
-					(*stackk)--;
-					st->stack[*stackk - 1] += st->stack[*stackk];
+					(*stackTop)--;
+					st->stack[*stackTop - 1] += st->stack[*stackTop];
 				}
 				(st->IP)++;
 				break;
 			case SUB :
-				if (*stackk < 2){
+				if (*stackTop < 2){
 					printf("Error in operation %d not enough operands in stack\n", st->IP + 1);
+					exit(1);
 				} else {
-					(*stackk)--;
-					st->stack[*stackk - 1] = st->stack[*stackk] - st->stack[*stackk - 1];
+					(*stackTop)--;
+					st->stack[*stackTop - 1] = st->stack[*stackTop] - st->stack[*stackTop - 1];
 				}
 				(st->IP)++;
 				break;
 			case CMP :
-				if (*stackk < 2){
+				if (*stackTop < 2){
 					printf("Error in operation %d not enough operands in stack\n", st->IP + 1);
+					exit(1);
 				} else {
-					(*stackk)--;
-					if (st->stack[*stackk - 1] < st->stack[*stackk]) {
-						st->stack[*stackk - 1] = 1;
-					} else if (st->stack[*stackk - 1] > st->stack[*stackk]) {
-						st->stack[*stackk - 1] = -1;
+					(*stackTop)--;
+					if (st->stack[*stackTop - 1] < st->stack[*stackTop]) {
+						st->stack[*stackTop - 1] = 1;
+					} else if (st->stack[*stackTop - 1] > st->stack[*stackTop]) {
+						st->stack[*stackTop - 1] = -1;
 					} else {
-						st->stack[*stackk - 1] = 0;
+						st->stack[*stackTop - 1] = 0;
 					}
 				}
 				(st->IP)++;
 				break;
 			case LD :
-				st->stack[(*stackk)++] = st->memory[program->operations[st->IP].arg];
+				st->stack[(*stackTop)++] = st->memory[program->operations[st->IP].arg];
 				(st->IP)++;
 				break;
 			case ST :
-				st->memory[program->operations[st->IP].arg] = st->stack[--(*stackk)];
+				st->memory[program->operations[st->IP].arg] = st->stack[--(*stackTop)];
 				(st->IP)++;
 				break;
 			case LDC :
-				st->stack[(*stackk)++] = program->operations[st->IP].arg;
+				st->stack[(*stackTop)++] = program->operations[st->IP].arg;
 				(st->IP)++;
 				break;
 			case JMP :
 				st->IP = program->operations[st->IP].arg;
 				break;
 			case BR :
-				if (st->stack[*stackk - 1] != 0) {
+				if (st->stack[*stackTop - 1] != 0) {
 					st->IP = program->operations[st->IP].arg;
 				} else {
 					(st->IP)++;
@@ -224,22 +227,35 @@ size_t hash(char* word) {
 int main(){
 	struct State st;
 	st.stack = calloc(Max_Stack, sizeof(int32_t));
+	if (st.stack == NULL) {
+		printf("Error \n Cannot allocate memory\n");
+		exit(1);
+	}
 	st.memory = malloc(Max_Memory_Size);
+	if (st.memory == NULL) {
+		printf("Error \n Cannot allocate memory\n");
+		exit(1);
+	}
 	st.IP = 0;
 	
 	struct Program program;
 	program.operations = malloc(Max_Operations_Size);
+	if (program.operations == NULL) {
+		printf("Error \n Cannot allocate memory\n");
+		exit(1);
+	}
 	program.label2line = createTable(hash, Max_Operations);
 
-	size_t opscount = 0, stackk = 0;
+	size_t opscount = 0, stackTop = 0;
 	
-	FILE* file = fopen("Input.txt", "r");
+	FILE* file = fopen("Input.txt", "rt");
 	if (!file) {
 		printf("Error \n Cannot open input file\n");
 		exit(1);
 	}
 	
 	if (findLabels(&program, file)) {
+		printf("Error\n FindLabels failed \n");
 		exit(1);
 	}
 	
@@ -257,10 +273,14 @@ int main(){
 	fclose(file);
 	
 	
-	performProgram(&program, &st, opscount, &stackk);
+	performProgram(&program, &st, opscount, &stackTop);
 	
-	for (int i = 0; i < stackk; ++i){
+	for (int i = 0; i < stackTop; ++i){
 		printf("%d\n", st.stack[i]);
 	}
-return 0;
+	
+	free(st.stack);
+	free(st.memory);
+	free(program.operations);
+	return 0;
 }
