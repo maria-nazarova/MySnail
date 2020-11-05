@@ -51,10 +51,14 @@ public class DrawingArea extends Canvas {
                 curve = new Curve();
         }
 
-        for (Point2D p : curve.mas) {
-            g.fillOval(p.getX(), p.getY(), 1, 1);
+        Point2D p = curve.returnNext(null);
+        while (p != null ){
+            if(Math.abs(p.getY()) < getHeight() && Math.abs(p.getX()) < getWidth()) {
+                g.fillOval(p.getX(), p.getY(), 1, 1);
+            }
+            p = curve.returnNext(p);
         }
     }
 
-
+    public double getCoordStep(){ return coordStep; }
 }

@@ -75,6 +75,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -82,16 +83,19 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PATH_TO_FX$" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.DrawingTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -166,6 +170,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DrawingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Charts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.DrawingTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Charts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.MathTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -200,9 +242,13 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="JUnit.MathTest" />
+      <item itemvalue="JUnit.DrawingTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DrawingTest" />
+        <item itemvalue="JUnit.MathTest" />
         <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -237,10 +283,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="359" y="0" width="577" height="680" key="#Main_(2)/0.0.1280.680@0.0.1280.680" timestamp="1602326767250" />
-    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602326752088">
+    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603469375230">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1602326752088" />
+    <state x="94" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1603469375230" />
+    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1604331955415">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680@0.0.1280.680" timestamp="1604331955415" />
     <state x="445" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1602330406973">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -249,26 +299,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="370" y="86" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1602935394164" />
-    <state x="348" y="84" key="FileChooserDialogImpl" timestamp="1602327289892">
+    <state x="360" y="0" key="#testfx-junit-4.0.15-alpha.jar" timestamp="1604225317060">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="348" y="84" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1602327289892" />
-    <state width="1235" height="31" key="GridCell.Tab.0.bottom" timestamp="1603098492931">
+    <state x="360" y="0" key="#testfx-junit-4.0.15-alpha.jar/0.0.1280.680@0.0.1280.680" timestamp="1604225317060" />
+    <state x="348" y="84" key="FileChooserDialogImpl" timestamp="1604226040578">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="31" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603098492931" />
-    <state width="1235" height="31" key="GridCell.Tab.0.center" timestamp="1603098492931">
+    <state x="348" y="84" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1604226040578" />
+    <state width="1235" height="214" key="GridCell.Tab.0.bottom" timestamp="1604510456382">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="31" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603098492931" />
-    <state width="1235" height="31" key="GridCell.Tab.0.left" timestamp="1603098492931">
+    <state width="1235" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1604510456382" />
+    <state width="1235" height="214" key="GridCell.Tab.0.center" timestamp="1604510456382">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="31" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603098492931" />
-    <state width="1235" height="31" key="GridCell.Tab.0.right" timestamp="1603098492931">
+    <state width="1235" height="214" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1604510456382" />
+    <state width="1235" height="214" key="GridCell.Tab.0.left" timestamp="1604510456382">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="31" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603098492931" />
+    <state width="1235" height="214" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1604510456382" />
+    <state width="1235" height="214" key="GridCell.Tab.0.right" timestamp="1604510456382">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1235" height="214" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1604510456382" />
     <state width="1235" height="181" key="GridCell.Tab.1.bottom" timestamp="1602950872373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -285,18 +339,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1235" height="181" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1602950872373" />
-    <state x="91" y="0" key="SettingsEditor" timestamp="1602955821055">
+    <state x="240" y="0" key="SettingsEditor" timestamp="1604226230293">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="91" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1602955821055" />
-    <state x="341" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1602936374395">
+    <state x="240" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1604226230293" />
+    <state x="341" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1604223817070">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="341" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1602936374395" />
-    <state x="90" y="41" key="new project wizard" timestamp="1602326915546">
+    <state x="341" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1604223817070" />
+    <state x="345" y="232" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1604226226007">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="90" y="41" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1602326915546" />
+    <state x="345" y="232" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1604226226007" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1604509947942">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1604509947942" />
+    <state x="90" y="0" key="new project wizard" timestamp="1603465938336">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="90" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1603465938336" />
     <state x="303" y="1" key="search.everywhere.popup" timestamp="1602955689130">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
