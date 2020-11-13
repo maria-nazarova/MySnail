@@ -1,0 +1,23 @@
+;if (x < y) A else B
+ldc y
+ldc x
+cmp
+ldc 1
+add
+br else
+A
+jmp ifExit
+else: B
+ifExit:
+
+; if (x <= y) A else B
+ldc x
+ldc y
+cmp
+ldc 1
+add
+br if
+B
+jmp ifExit
+if: A
+ifExit:
