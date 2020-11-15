@@ -100,6 +100,7 @@ public class Controller implements Initializable {
         buttonReady(button6);
         buttonReady(button7);
         buttonReady(button8);
+        restartB.setDisable(false);
         game = new GameState();
         switch (cmb.getSelectionModel().getSelectedItem()) {
             case randomAI:
