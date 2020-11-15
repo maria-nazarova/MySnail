@@ -85,26 +85,21 @@ public class Controller implements Initializable {
         });
     }
 
+    public void buttonReady(Button b){
+        b.setText("");
+        b.setDisable(false);
+    }
+
     public void game(){
-        button0.setText("");
-        button1.setText("");
-        button2.setText("");
-        button3.setText("");
-        button4.setText("");
-        button5.setText("");
-        button6.setText("");
-        button7.setText("");
-        button8.setText("");
-        button0.setDisable(false);
-        button1.setDisable(false);
-        button2.setDisable(false);
-        button3.setDisable(false);
-        button4.setDisable(false);
-        button5.setDisable(false);
-        button6.setDisable(false);
-        button7.setDisable(false);
-        button8.setDisable(false);
-        restartB.setDisable(false);
+        buttonReady(button0);
+        buttonReady(button1);
+        buttonReady(button2);
+        buttonReady(button3);
+        buttonReady(button4);
+        buttonReady(button5);
+        buttonReady(button6);
+        buttonReady(button7);
+        buttonReady(button8);
         game = new GameState();
         switch (cmb.getSelectionModel().getSelectedItem()) {
             case randomAI:

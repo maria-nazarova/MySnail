@@ -7,6 +7,9 @@ public class GameState {
     private static int[] buttons = new int[9];
     private int turnNumber;
     private static int lastTurn = -1;
+    private int[][] rows = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
+    private int[][] cols = {{0, 3, 6}, {1, 4, 7}, {2, 5, 8}};
+    private int[][] diags = {{0, 4, 8}, {2, 4, 6}};
 
     public static boolean isFree(int i) {
         return (buttons[i] == 0);
@@ -29,7 +32,7 @@ public class GameState {
         return turnNumber;
     }
 
-    public void makeTurn(int i, boolean isAI){
+    public void makeTurn(int i, boolean isAI) {
         turnNumber++;
         buttons[i] = isAI ? 1 : -1;
         lastTurn = i;
@@ -40,36 +43,29 @@ public class GameState {
     }
 
     public int isGameFinished() {
-        for (int i = 0; i < 3; ++i) {
-            if (buttons[i] == 1 && buttons[3 + i] == 1 && buttons[6 + i] == 1){
-                return 1;
-            }
-            if (buttons[i] == -1 && buttons[3 + i] == -1 && buttons[6 + i] == -1){
-                return -1;
-            }
-            if (buttons[i * 3] == 1 && buttons[1 + i * 3] == 1 && buttons[2 + i * 3] == 1){
-                return 1;
-            }
-            if (buttons[i * 3] == -1 && buttons[1 + i * 3] == -1 && buttons[2 + i * 3] == -1){
-                return -1;
-            }
+        if (checkWin(rows) != 0) return checkWin(rows);
+        if (checkWin(cols) != 0) return checkWin(cols);
+        if (checkWin(diags) != 0) return checkWin(diags);
+        if (isDraw()) return 5;
+        return 0;
+    }
 
-        }
-        if (buttons[0] == 1 && buttons[4] == 1 && buttons[8] == 1){
-            return 1;
-        }
-        if (buttons[0] == -1 && buttons[4] == -1 && buttons[8] == -1){
-            return -1;
-        }
-        if (buttons[2] == 1 && buttons[4] == 1 && buttons[6] == 1){
-            return 1;
-        }
-        if (buttons[2] == -1 && buttons[4] == -1 && buttons[6] == -1){
-            return -1;
-        }
+    private boolean isDraw(){
         for (int i = 0; i < 9; ++i) {
-            if (buttons[i] == 0) return 0;
+            if (buttons[i] == 0) return false;
         }
-        return 5;
+        return true;
+    }
+
+    private int checkWin(int[][] a) {
+        for (int[] x: a){
+            if (buttons[x[0]] == 1 && buttons[x[1]] == 1 && buttons[x[2]] == 1){
+                return 1;
+            }
+            if (buttons[x[0]] == -1 && buttons[x[1]] == -1 && buttons[x[2]] == -1){
+                return -1;
+            }
+        }
+        return 0;
     }
 }
