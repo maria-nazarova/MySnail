@@ -1,7 +1,7 @@
 package app;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ServiceLoader;
+import java.lang.reflect.Method;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,7 +14,6 @@ import javafx.scene.text.Font;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import plugins.*;
 
 public class Controller implements Initializable {
     @FXML
@@ -48,6 +47,7 @@ public class Controller implements Initializable {
     private GameState game;
     private AI ai;
     ObservableList<String> items;
+    ObservableList<String> plugNames;
     boolean isPluginOn = false;
 
 
@@ -96,25 +96,21 @@ public class Controller implements Initializable {
         });
     }
 
+    public void buttonReady(Button b){
+        b.setText("");
+        b.setDisable(false);
+    }
+
     public void game(){
-        button0.setText("");
-        button1.setText("");
-        button2.setText("");
-        button3.setText("");
-        button4.setText("");
-        button5.setText("");
-        button6.setText("");
-        button7.setText("");
-        button8.setText("");
-        button0.setDisable(false);
-        button1.setDisable(false);
-        button2.setDisable(false);
-        button3.setDisable(false);
-        button4.setDisable(false);
-        button5.setDisable(false);
-        button6.setDisable(false);
-        button7.setDisable(false);
-        button8.setDisable(false);
+        buttonReady(button0);
+        buttonReady(button1);
+        buttonReady(button2);
+        buttonReady(button3);
+        buttonReady(button4);
+        buttonReady(button5);
+        buttonReady(button6);
+        buttonReady(button7);
+        buttonReady(button8);
         restartB.setDisable(false);
         game = new GameState();
         isPluginOn = false;
@@ -225,13 +221,51 @@ public class Controller implements Initializable {
 //      change absolute path to plugins dir before executing
         File folder = new File(dirPath);
         File[] listOfFiles = folder.listFiles();
-        int i = 0;
         items = FXCollections.observableArrayList();
+        plugNames = FXCollections.observableArrayList();
         try {
             assert listOfFiles != null;
             for (File file : listOfFiles) {
                 if (file.isFile()) {
-                    items.add(file.getName());
+                    String fileName = file.getName();
+                    String className = "plugins." + fileName;
+                    int x = className.lastIndexOf('.');
+                    className = className.substring(0, x);
+                    plugNames.add(fileName);
+                    try {
+                        Class c = Class.forName(className);
+                        try {
+                            Method m = c.getMethod("getName");
+                            try {
+                                String s = (String) m.invoke(null);
+                                items.add(s);
+                            } catch (IllegalAccessException ia) {
+                                System.out.println("1");
+                                label.setText("Something went wrong");
+                                label.setVisible(true);
+                                items.add("Failed to upload plugin");
+                                return;
+                            }catch (InvocationTargetException ite) {
+                                System.out.println("2");
+                                label.setText("Something went wrong");
+                                label.setVisible(true);
+                                items.add("Failed to upload plugin");
+                                return;
+                            }
+                        }catch (NoSuchMethodException ex) {
+                            System.out.println("3");
+                            label.setText("Something went wrong");
+                            label.setVisible(true);
+                            items.add("Failed to upload plugin");
+                            return;
+                        }
+                    } catch (ClassNotFoundException ex) {
+                        System.out.println("4");
+                        label.setText("Something went wrong");
+                        label.setVisible(true);
+                        items.add("Failed to upload plugin");
+                        return;
+                    }
                 }
             }
         } catch (NullPointerException ex) {
@@ -244,7 +278,8 @@ public class Controller implements Initializable {
         String selected = plugins.getSelectionModel().getSelectedItem();
         for (String item : items) {
             if (selected.equals(item)) {
-                String className = "plugins." + item;
+                String s = plugNames.get(items.indexOf(item));
+                String className = "plugins." + s;
                 int x = className.lastIndexOf('.');
                 className = className.substring(0, x);
                 try {

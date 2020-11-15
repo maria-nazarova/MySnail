@@ -5,7 +5,13 @@ import java.util.Random;
 import static app.GameState.*;
 
 public class HardAI extends AI{
+    private static final String name = "Hard AI";
     private Random random = new Random();
+
+    public static String getName(){
+        return name;
+    }
+
     public int action(boolean isFirst, int turn){
         if (isFirst) {
             if (turn == 0) return 4;
