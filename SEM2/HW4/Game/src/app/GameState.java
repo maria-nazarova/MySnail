@@ -6,10 +6,10 @@ public class GameState {
     private boolean AIFirst;
     private static int[] buttons = new int[9];
     private int turnNumber;
-    private static int lastTurn = -1;
-    private int[][] rows = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
-    private int[][] cols = {{0, 3, 6}, {1, 4, 7}, {2, 5, 8}};
-    private int[][] diags = {{0, 4, 8}, {2, 4, 6}};
+    private static int lastTurn;
+    private final int[][] rows = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
+    private final int[][] cols = {{0, 3, 6}, {1, 4, 7}, {2, 5, 8}};
+    private final int[][] diags = {{0, 4, 8}, {2, 4, 6}};
 
     public static boolean isFree(int i) {
         return (buttons[i] == 0);
@@ -22,6 +22,7 @@ public class GameState {
             buttons[i] = 0;
         }
         turnNumber = 0;
+        lastTurn = -1;
     }
 
     public boolean isAIFirst() {

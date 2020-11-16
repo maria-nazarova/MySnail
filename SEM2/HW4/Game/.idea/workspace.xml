@@ -82,11 +82,12 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GitHub/MySnail/SEM2/HW3/Game" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -105,17 +106,6 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
@@ -150,6 +140,19 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -230,7 +233,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -243,6 +246,7 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1605281869165" duration="1846000" />
+      <workItem from="1605516322811" duration="6774000" />
     </task>
     <servers />
   </component>
@@ -274,26 +278,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="394" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1603474652393" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605518597761">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1605518597761" />
     <state x="347" y="80" key="FileChooserDialogImpl" timestamp="1605433497559">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="347" y="80" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1605433497559" />
-    <state width="1235" height="163" key="GridCell.Tab.0.bottom" timestamp="1605445844519">
+    <state width="1237" height="117" key="GridCell.Tab.0.bottom" timestamp="1605524470271">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605445844519" />
-    <state width="1235" height="163" key="GridCell.Tab.0.center" timestamp="1605445844519">
+    <state width="1237" height="117" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605524470271" />
+    <state width="1237" height="117" key="GridCell.Tab.0.center" timestamp="1605524470271">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1605445844519" />
-    <state width="1235" height="163" key="GridCell.Tab.0.left" timestamp="1605445844519">
+    <state width="1237" height="117" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1605524470271" />
+    <state width="1237" height="117" key="GridCell.Tab.0.left" timestamp="1605524470270">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1605445844519" />
-    <state width="1235" height="163" key="GridCell.Tab.0.right" timestamp="1605445844519">
+    <state width="1237" height="117" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1605524470270" />
+    <state width="1237" height="117" key="GridCell.Tab.0.right" timestamp="1605524470271">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605445844519" />
+    <state width="1237" height="117" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605524470271" />
     <state width="1235" height="74" key="GridCell.Tab.1.bottom" timestamp="1605187075692">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -314,22 +322,38 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="74" width="1280" height="546" key="IDE.errors.dialog/0.0.1280.680@0.0.1280.680" timestamp="1605279144785" />
-    <state x="120" y="0" key="SettingsEditor" timestamp="1605359620717">
+    <state x="120" y="0" key="SettingsEditor" timestamp="1605516366933">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="120" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605359620717" />
+    <state x="120" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605516366933" />
     <state x="335" y="163" key="com.intellij.ide.util.TipDialog" timestamp="1605281977659">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="335" y="163" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1605281977659" />
-    <state x="399" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605359619541">
+    <state x="399" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605516118225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1605359619541" />
-    <state width="600" height="362" key="javadoc.popup" timestamp="1605359081364">
+    <state x="399" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1605516118225" />
+    <state x="371" y="115" key="extract.method.dialog" timestamp="1605519078511">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="600" height="362" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1605359081364" />
+    <state x="371" y="115" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1605519078511" />
+    <state x="0" y="0" width="589" height="680" key="find.popup" timestamp="1605517557622">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" width="589" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1605517557622" />
+    <state width="600" height="362" key="javadoc.popup" timestamp="1605517618527">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="600" height="362" key="javadoc.popup/0.0.1280.680@0.0.1280.680" timestamp="1605517618527" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1605516455832">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1605516455832" />
+    <state x="321" y="23" key="spring file set editor" timestamp="1605519513402">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="321" y="23" key="spring file set editor/0.0.1280.680@0.0.1280.680" timestamp="1605519513402" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

@@ -1,4 +1,5 @@
 package app;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,10 +50,12 @@ public class Controller implements Initializable {
     ObservableList<String> items;
     ObservableList<String> plugNames;
     boolean isPluginOn = false;
+    AnnotationConfigApplicationContext cont;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        cont = new AnnotationConfigApplicationContext(Cont.class);
         buttonSetUP(button0, 0);
         buttonSetUP(button1, 1);
         buttonSetUP(button2, 2);
@@ -80,6 +83,7 @@ public class Controller implements Initializable {
     }
 
     public void buttonSetUP(Button b, int number) {
+        System.out.println(number);
         b.setOnAction(EventHandler -> {
             b.setFont(new Font(40));
             b.setStyle("-fx-text-fill: black");
@@ -99,9 +103,19 @@ public class Controller implements Initializable {
     public void buttonReady(Button b){
         b.setText("");
         b.setDisable(false);
+        System.out.println('1');
     }
 
     public void game(){
+//        buttonSetUP(button0, 0);
+//        buttonSetUP(button1, 1);
+//        buttonSetUP(button2, 2);
+//        buttonSetUP(button3, 3);
+//        buttonSetUP(button4, 4);
+//        buttonSetUP(button5, 5);
+//        buttonSetUP(button6, 6);
+//        buttonSetUP(button7, 7);
+//        buttonSetUP(button8, 8);
         buttonReady(button0);
         buttonReady(button1);
         buttonReady(button2);
@@ -116,10 +130,10 @@ public class Controller implements Initializable {
         isPluginOn = false;
         switch (cmb.getSelectionModel().getSelectedItem()) {
             case randomAI:
-                ai = new RandomAI();
+                ai = cont.getBean("randomAI", RandomAI.class);
                 break;
             case hardAI:
-                ai = new HardAI();
+                ai = cont.getBean("hardAI", HardAI.class);
                 break;
         }
         if (game.isAIFirst()) { label.setText("AI's turn is first"); }
