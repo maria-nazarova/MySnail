@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import app.MyButton?>
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
    <children>
       <HBox prefHeight="0.0" prefWidth="300.0">
@@ -44,23 +43,23 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <MyButton fx:id="button0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button1" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button2" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button1" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button2" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <MyButton fx:id="button3" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button4" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button5" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button3" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button4" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button5" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <MyButton fx:id="button6" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button7" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
-            <MyButton fx:id="button8" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button6" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button7" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
+            <Button fx:id="button8" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" />
          </children>
       </HBox>
    </children>
